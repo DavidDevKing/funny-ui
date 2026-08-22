@@ -16,28 +16,24 @@ function App() {
                 <hr className='p-5'></hr>
                 <div className='flex flex-col'>
                     <div className='flex justify-between mb-10'>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
-                        <BouncyAttractor child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"></div>}/>
+                        {
+                        Array.from({ length : 14 }).map((_, index) => (
+                        <BouncyAttractor
+                        key={index}
+                        child={<div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-10 h-40 rounded-full bg-stone-100"
+                        ></div>}/>
+                        ))
+                        }
                     </div>
                     <div className='grid grid-cols-3'>
-                        <div className='flex items-center justify-center'><BouncyAttractor /></div>
-                        <div className='flex items-center justify-center'><BouncyAttractor /></div>
-                        <div className='flex items-center justify-center'><BouncyAttractor /></div>
-                        <div className='flex items-center justify-center'><BouncyAttractor /></div>
-                        <div className='flex items-center justify-center'><BouncyAttractor /></div>
-                        <div className='flex items-center justify-center'><BouncyAttractor /></div>
+                        {
+                        Array.from({ length : 6 }).map((_, index) => (
+                        <div
+                        key={index}
+                        className='flex items-center justify-center'>
+                            <BouncyAttractor />
+                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
