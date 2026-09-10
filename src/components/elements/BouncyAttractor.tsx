@@ -9,7 +9,7 @@ interface BouncyAttractorProps{
     /** Factor that determins how smooth the bounce animation is */
     damping? : number;
     /** Factor that determins how long the element bounces for */
-    bouncyness? : number;
+    bounciness? : number;
     /** The child element of the bouncy attractor to be rendered */
     child? : ReactElement;
 }
@@ -22,7 +22,7 @@ function BouncyAttractor({
     maxRadius = 50,
     frequency = 0.2,
     damping = 6,
-    bouncyness = 12,
+    bounciness = 12,
     child = <div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-60 h-60 rounded-full bg-stone-100 text-[#141414] font-semibold"></div>
 }: BouncyAttractorProps) {
     const bouncyAttractorRef = useRef<HTMLDivElement>(null);
@@ -82,7 +82,7 @@ function BouncyAttractor({
             
 
             angle += frequency;
-            amplitude = amplitude.lerp(Vector2.ZERO, 1/bouncyness);
+            amplitude = amplitude.lerp(Vector2.ZERO, 1/bounciness);
             
             // offset.y = target.y + Math.sin(Date.now()/60) * maxRadius;
             
