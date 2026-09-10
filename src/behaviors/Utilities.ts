@@ -22,7 +22,7 @@ export class Vector2 {
     y: number;
 
     /** Returns a new Vector2 instance at origin (0, 0) */
-    public static readonly ZERO : Vector2 = new Vector2();
+    public static get ZERO() : Vector2 {return new Vector2};
 
     constructor(x: number = 0, y: number = 0){
         this.x = x;
