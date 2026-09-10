@@ -5,23 +5,24 @@ import { lerp } from "../../behaviors/Utilities";
 
 
 interface FloatingCharacterProps {
+    /** The single chrater to be displayed */
     character: string;
+    /** The total amount this character will translate on the x axis on scroll */
     translateEndX?: number;
+    /** The total amount this character will translate on the y axis on scroll */
     translateEndY?: number;
+    /** The totatl amount this character will rotate on scroll */
     rotateEnd?: number;
+    /** The scroll value at which the charater starts floating */
     scrollStart? : number;
+    /** The offset scroll from the scroll start which the character will float for */
     scrollLength? : number;
 }
+
+
+
 /**
  * A react component single floating character
- * 
- * @param character - the chrater to be displayed
- * @param translateEndX - the total amount this character will translate on the x axis on scroll
- * @param translateEndY - the total amount this character will translate on the y axis on scroll
- * @param rotateEnd - the total amount in degrees this character will rotate on scroll
- * @param scrollStart - the scroll value at which the character starts floating
- * @param scrollLength - the offset scroll from the scroll start that the character will float for
- * @returns A html element containing a single floating character
  */
 function FloatingCharacter({character, translateEndX = 0, translateEndY = 0, rotateEnd = 0, scrollStart = 0, scrollLength = 1000}: FloatingCharacterProps){
     const letterRef = useRef<HTMLSpanElement>(null);

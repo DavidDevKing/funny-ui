@@ -2,14 +2,22 @@ import { useEffect, useRef, type ReactElement } from "react"
 import { Vector2 } from "../../behaviors/Utilities";
 
 interface BouncyAttractorProps{
+    /** The maximum distance from the starting positon the element can move */
     maxRadius?: number;
+    /** Factor that determines how many times the element bounces */
     frequency? : number;
+    /** Factor that determins how smooth the bounce animation is */
     damping? : number;
+    /** Factor that determins how long the element bounces for */
     bouncyness? : number;
+    /** The child element of the bouncy attractor to be rendered */
     child? : ReactElement;
 }
 
 
+/**
+ * An element at bounces towards the mouse cursor on hover
+ */
 function BouncyAttractor({
     maxRadius = 50,
     frequency = 0.2,
@@ -40,6 +48,9 @@ function BouncyAttractor({
             center = new Vector2(rect.left + rect.width/2, rect.top + rect.height/2);
             
             target = new Vector2(e.clientX-center.x, e.clientY-center.y);
+            const offsetDir = target.normalized();
+            target.x = Math.min(offsetDir.x * maxRadius, Math.max(offsetDir.x * -maxRadius, target.x));
+            target.y = Math.min(offsetDir.y * maxRadius, Math.max(offsetDir.y * -maxRadius, target.y));
             amplitude = new Vector2(target.x, target.y);
             angle = Math.PI/2;
 

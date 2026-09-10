@@ -1,27 +1,25 @@
 import FloatingCharacter from "./FloatingCharacter"
 
 interface FloatingCharacterLineProps{
+    /** The string of floating characters to be displayed */
     text : string;
+    /** The maximum positive offset of each floating character on the y axis */
     yMax? : number;
+    /** The maximum negative offset of each floating character on the y axis */
     yMin? : number;
+    /** The maximum postive offset of each floating character on the x axis */
     xMax? : number;
+    /** The maximum negative offset of each floating character on the x axis */
     xMin? : number;
+    /** The maximum rotational offset in degrees of each floating character */
     rot? : number;
+    /** The scroll value at which the character starts floating */
     scrollStart? : number;
+    /** The offset scroll from the scroll start that the character will float for */
     scrollLength? : number;
-
 }
 /**
  * A container for a single line of floating text
- * @param text - the string of floating characters to be displayed
- * @param yMax - the maximum positive offset of each floating character on the y axis
- * @param yMin - the minimum negative offset of each floating character on the y axis
- * @param xMax - the maximum positive offset of each floating character on the x axis
- * @param xMin - the minimum negative offest of each floating character on the x axis
- * @param rot - the maximum rotational offest in degrees of each floating character
- * @param scrollStart - the scroll value at which the character starts floating
- * @param scrollLength - the offset scroll from the scroll start that the character will float for
- * @returns 
  */
 const FloatingCharacterLine = ({ text, yMax = 3500, yMin = 3500, xMax = 10, xMin = 10, rot = 30, scrollStart = 0, scrollLength = 1000 } : FloatingCharacterLineProps) =>{
     const words : string[] = text.split(" ");
