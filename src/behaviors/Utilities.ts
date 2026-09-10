@@ -21,6 +21,7 @@ export class Vector2 {
     x: number;
     y: number;
 
+    /** Returns a new Vector2 instance at origin (0, 0) */
     public static readonly ZERO : Vector2 = new Vector2();
 
     constructor(x: number = 0, y: number = 0){
@@ -28,37 +29,37 @@ export class Vector2 {
         this.y = y;
     }
 
-    /** Add specified vector to self */
+    /** Add specified vector to self and return the resulting Vector2 */
     public add(vec : Vector2) : Vector2{
         return new Vector2(this.x + vec.x, this.y + vec.y);
     }
 
-    /** Subract specified vector from self */
+    /** Subtract specified vector from self and return the resulting Vector2 */
     public subtract(vec : Vector2) : Vector2{
         return new Vector2(this.x - vec.x, this.y - vec.y);
     }
 
-    /** Mulpiply self by specified vector */
+    /** Multiply the vector by a scalar number and return the resulting Vector2 */
     public multiply(multiplier: number) : Vector2 {
         return new Vector2(this.x * multiplier, this.y * multiplier);
     }
 
-    /** Divide self by specified vector */
+    /** Divide the vector by a scalar number and return the resulting Vector2 */
     public divide(quotient: number) : Vector2 {
         return new Vector2(this.x / quotient, this.y / quotient);
     }
 
-    /** Returns the magnitude of the vector */
+    /** Return the magnitude of the vector */
     public magnitude(): number {
         return (Math.sqrt(this.x**2 + this.y**2));
     }
 
-    /** Returns the normalized vector of the vector */
+    /** Normalize the vector and return the resulting Vector2 */
     public normalized() : Vector2 {
         return this.divide(this.magnitude());
     }
 
-    /** Linearly interpolate from self to specified vector by specified ease velue */
+    /** Linearly interpolate from self to specified vector by specified ease velue and return the resulting Vector2 */
     public lerp(end: Vector2, ease : number) : Vector2 {
         return new Vector2(lerp(this.x, end.x, ease), lerp(this.y, end.y, ease));
     }
