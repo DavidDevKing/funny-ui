@@ -45,8 +45,8 @@ export class Vector2 {
     }
 
     /** Divide the vector by a scalar number and return the resulting Vector2 */
-    public divide(quotient: number) : Vector2 {
-        return new Vector2(this.x / quotient, this.y / quotient);
+    public divide(divisor: number) : Vector2 {
+        return new Vector2(this.x / divisor, this.y / divisor);
     }
 
     /** Return the magnitude of the vector */
