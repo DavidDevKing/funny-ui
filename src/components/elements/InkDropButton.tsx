@@ -6,13 +6,21 @@ import { Vector2 } from "../../behaviors/Utilities";
 
 
 interface InkDropButtonProps{
+    /** Background color of the element */
     color? : string;
+    /** Color of the inkdrop effect */
     hoverColor? : string;
+    /** Define the position the inkdrop spreads from  */
     origin? : "left" | "right" | "top" | "bottom" | "center" | "cursor";
+    /** Border radius of the button */
     borderRadius? : string;
+    /** Children elements of the button */
     children? : ReactNode
 }
 
+/**
+ * Element that uses an inkdrop effect to change it's background on hover
+ */
 function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cursor", borderRadius = "100%", children} : InkDropButtonProps){
     const [ishovered, setIsHovered] = useState<boolean>(false);
 
@@ -27,6 +35,7 @@ function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cur
         foregroundRef.current.style.translate = `${e.clientX - center.x}px ${e.clientY - center.y}px`
     }
 
+    
     useEffect(() => {
         if (!buttonRef.current || !foregroundRef.current || !(origin === "cursor")) return;
         buttonRef.current.addEventListener("pointerenter", updateOrigin);
@@ -48,13 +57,14 @@ function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cur
             borderRadius: `${borderRadius}`
             }}>
             {children}
+
             <div
             ref={foregroundRef}
             className={"absolute inset-0 w-full h-full rounded-full -z-10 scale-0 duration-200 ease-in-out backdrop-hue-rotate-180"}
             style={{
                 backgroundColor: `${hoverColor}`,
                 translate : `${origin === "left" ? "-50% 0" : origin === "right" ? "50% 0" : origin === "top" ? "0 -50%" : origin === "bottom" ? "0 50%" : "0"}`,
-                // IF we start from the edge to grow the effect, the backdrop will have to strech double the distance
+                // If we start from the edge to grow the effect, the backdrop will have to strech double the distance
                 scale : `${ishovered ? (origin == "center" ? "1" : "2") : "0"}`,
                 }} ></div>
             <div className={"absolute inset-0 w-full h-full -z-20"} style={{backgroundColor: `${color}`}} ></div>
