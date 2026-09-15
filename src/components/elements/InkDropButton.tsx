@@ -24,17 +24,17 @@ interface InkDropButtonProps{
 function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cursor", borderRadius = "100%", children} : InkDropButtonProps){
 
     const buttonRef = useRef<HTMLDivElement>(null);
-    const foregroundRef = useRef<HTMLDivElement>(null);
+    const inkDropRef = useRef<HTMLDivElement>(null);
 
 
     const updateInkDrop = (e: MouseEvent) => {
-        if (!foregroundRef.current || !buttonRef.current) return;
+        if (!inkDropRef.current || !buttonRef.current) return;
         // Update the origin
         const rect : DOMRect = buttonRef.current.getBoundingClientRect();
         const rectVec : Vector2 = new Vector2(rect.width, rect.height);
         const originVec : Vector2 = new Vector2(rect.left, rect.top);
         const offset : Vector2 = new Vector2(e.clientX - originVec.x, e.clientY - originVec.y);
-        foregroundRef.current.style.translate = `${offset.x}px ${offset.y}px`;
+        inkDropRef.current.style.translate = `${offset.x}px ${offset.y}px`;
 
 
 
@@ -52,16 +52,16 @@ function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cur
         // Update the scale
         if (e.type === "pointerenter"){
             let targetScale = largestDistanceFromPoint(offset, rectVec) * 2;
-            foregroundRef.current.style.scale = `${targetScale}`
+            inkDropRef.current.style.scale = `${targetScale}`
         }
         else if (e.type === "pointerleave"){
-            foregroundRef.current.style.scale = "0";
+            inkDropRef.current.style.scale = "0";
         }
     }
 
     // Add event listeners for pointerenter and pointer exit
     useEffect(() => {
-        if (!buttonRef.current || !foregroundRef.current || !(origin === "cursor")) return;
+        if (!buttonRef.current || !inkDropRef.current || !(origin === "cursor")) return;
         buttonRef.current.addEventListener("pointerenter", updateInkDrop);
         buttonRef.current.addEventListener("pointerleave", updateInkDrop);
         
@@ -81,7 +81,7 @@ function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cur
             {children}
 
             <div
-                ref={foregroundRef}
+                ref={inkDropRef}
                 className={"absolute w-px h-px rounded-full -z-10 scale-0 duration-200 ease-in-out backdrop-hue-rotate-180"}
                 style={{
                     backgroundColor: `${hoverColor}`,
