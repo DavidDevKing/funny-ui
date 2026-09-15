@@ -52,7 +52,7 @@ function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cur
         ref={buttonRef}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={"relative group inline-flex overflow-hidden cursor-pointer"}
+        className={"relative group flex overflow-hidden cursor-pointer"}
         style={{
             borderRadius: `${borderRadius}`
             }}>
