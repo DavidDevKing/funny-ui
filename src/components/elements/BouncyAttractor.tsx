@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactElement } from "react"
+import { useEffect, useRef, type ReactNode } from "react"
 import { Vector2 } from "../../behaviors/Utilities";
 
 interface BouncyAttractorProps{
@@ -11,7 +11,7 @@ interface BouncyAttractorProps{
     /** Factor that determins how long the element bounces for */
     bounciness? : number;
     /** The child element of the bouncy attractor to be rendered */
-    child? : ReactElement;
+    children? : ReactNode;
 }
 
 
@@ -23,7 +23,7 @@ function BouncyAttractor({
     frequency = 0.2,
     damping = 6,
     bounciness = 12,
-    child = <div className="cursor-pointer inline-flex justify-center items-center relative z-10 w-60 h-60 rounded-full bg-stone-100 text-[#141414] font-semibold"></div>
+    children
 }: BouncyAttractorProps) {
     const bouncyAttractorRef = useRef<HTMLDivElement>(null);
 
@@ -109,7 +109,7 @@ function BouncyAttractor({
 
     return (
         <div ref={bouncyAttractorRef}>
-            {child}
+            {children}
         </div>
     )
 }
