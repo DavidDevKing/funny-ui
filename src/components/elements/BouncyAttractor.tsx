@@ -42,7 +42,7 @@ function BouncyAttractor({
         let angle = 0;
         let rect : DOMRect;
 
-        const handleMouseOver = (e: MouseEvent) =>{
+        const handlePointerOver = (e: MouseEvent) =>{
             rect = bouncyAttractor.getBoundingClientRect();
 
             center = new Vector2(rect.left + rect.width/2, rect.top + rect.height/2);
@@ -59,14 +59,14 @@ function BouncyAttractor({
 
 
 
-        const handleMouseMove = (e: MouseEvent) => {
+        const handlePointerMove = (e: MouseEvent) => {
             target = new Vector2(e.clientX-center.x, e.clientY-center.y);
             const offsetDir = target.normalized();
             target.x = Math.min(offsetDir.x * maxRadius, Math.max(offsetDir.x * -maxRadius, target.x));
             target.y = Math.min(offsetDir.y * maxRadius, Math.max(offsetDir.y * -maxRadius, target.y));
         }
         
-        const handleMouseOut = () => {
+        const handlePointerOut = () => {
             amplitude.x = -(target.x) *2;
             amplitude.y = -(target.y) *2;
             angle = Math.PI/2;
@@ -93,14 +93,14 @@ function BouncyAttractor({
         UpdatePosition();
 
 
-        bouncyAttractor.addEventListener('mousemove', handleMouseMove);
-        bouncyAttractor.addEventListener('mouseover', handleMouseOver);
-        bouncyAttractor.addEventListener('mouseout', handleMouseOut)
+        bouncyAttractor.addEventListener('pointermove', handlePointerMove);
+        bouncyAttractor.addEventListener('pointerenter', handlePointerOver);
+        bouncyAttractor.addEventListener('pointerleave', handlePointerOut);
 
         return () => {
-            bouncyAttractor.removeEventListener('mousemove', handleMouseMove);
-            bouncyAttractor.removeEventListener('mouseover', handleMouseOver);
-            bouncyAttractor.removeEventListener('mouseout', handleMouseOut);
+            bouncyAttractor.removeEventListener('pointermove', handlePointerMove);
+            bouncyAttractor.removeEventListener('pointerenter', handlePointerOver);
+            bouncyAttractor.removeEventListener('pointerleave', handlePointerOut);
         }
     }, [])
 
@@ -108,7 +108,7 @@ function BouncyAttractor({
 
 
     return (
-        <div ref={bouncyAttractorRef}>
+        <div ref={bouncyAttractorRef} className="pointer-events-none *:pointer-events-auto">
             {children}
         </div>
     )
