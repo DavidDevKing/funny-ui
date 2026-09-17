@@ -42,7 +42,7 @@ function BouncyAttractor({
         let angle = 0;
         let rect : DOMRect;
 
-        const handlePointerOver = (e: MouseEvent) =>{
+        const handlePointerEnter = (e: MouseEvent) =>{
             rect = bouncyAttractor.getBoundingClientRect();
 
             center = new Vector2(rect.left + rect.width/2, rect.top + rect.height/2);
@@ -66,7 +66,7 @@ function BouncyAttractor({
             target.y = Math.min(offsetDir.y * maxRadius, Math.max(offsetDir.y * -maxRadius, target.y));
         }
         
-        const handlePointerOut = () => {
+        const handlePointerLeave = () => {
             amplitude.x = -(target.x) *2;
             amplitude.y = -(target.y) *2;
             angle = Math.PI/2;
@@ -94,13 +94,13 @@ function BouncyAttractor({
 
 
         bouncyAttractor.addEventListener('pointermove', handlePointerMove);
-        bouncyAttractor.addEventListener('pointerenter', handlePointerOver);
-        bouncyAttractor.addEventListener('pointerleave', handlePointerOut);
+        bouncyAttractor.addEventListener('pointerenter', handlePointerEnter);
+        bouncyAttractor.addEventListener('pointerleave', handlePointerLeave);
 
         return () => {
             bouncyAttractor.removeEventListener('pointermove', handlePointerMove);
-            bouncyAttractor.removeEventListener('pointerenter', handlePointerOver);
-            bouncyAttractor.removeEventListener('pointerleave', handlePointerOut);
+            bouncyAttractor.removeEventListener('pointerenter', handlePointerEnter);
+            bouncyAttractor.removeEventListener('pointerleave', handlePointerLeave);
         }
     }, [])
 
