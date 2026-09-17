@@ -6,12 +6,12 @@
 
 - `FloatingCharacter`: A character that floats on mouse scroll.
 - `FloatingCharacterLine`: A line of floating characters.
-- `Bouncy Attractor`: A magnetic component that pulls towards the mouse cursor with springy physics.
+- `BouncyAttractor`: A magnetic component that pulls towards the mouse cursor with springy physics.
+- `InkDropButton`: A button that mimics the effect of ink dropping on it on hover.
 
 ## Getting Started
 
 Copy the contents of `src/behaviours`, `src/componets/elements` `src/fonts` to your project.
-
 
 ## Run the demo
 
