@@ -59,7 +59,7 @@ function InkDropButton({color = "#772B81", hoverColor = "#D69F00", origin = "cur
             }
             else if (origin === "top" || origin === "bottom") inkDrop.style.scale = `${rectVec.y * 2}`;
             else if (origin === "left" || origin === "right") inkDrop.style.scale = `${rectVec.x *2}`;
-            else inkDrop.style.scale = `${Math.max(rectVec.x, rectVec.y)}`
+            else inkDrop.style.scale = `${rectVec.magnitude()}`
         }
         else if (e.type === "pointerleave"){
             inkDrop.style.scale = "0";
