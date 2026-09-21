@@ -43,7 +43,6 @@ function FloatingCharacter({character, translateEndX = 0, translateEndY = 0, rot
             let clampedScroll = Math.min(Math.max(currentScroll, scrollStart), scrollLength);
             translateOffsetX = ((clampedScroll-scrollStart)/scrollLength) * translateEndX;
             translateOffsetY = lerp(translateOffsetY, (((clampedScroll-scrollStart)/scrollLength) * translateEndY), 0.2);
-            // translateOffsetY = (clampedScroll/endOfScroll) * translateEndY + clampedScroll;
             rotateOffset = ((clampedScroll-scrollStart)/scrollLength) * rotateEnd;
             if (letterRef.current)  letterRef.current.style.transform = "translate("+ translateOffsetX+"px, " + (-translateOffsetY)+"px) rotate(" + rotateOffset +"deg)";
             animationID = requestAnimationFrame(handleFloating);
