@@ -32,6 +32,8 @@ function FloatingCharacter({character, translateEndX = 0, translateEndY = 0, rot
         let translateOffsetX = 0;
         let translateOffsetY = 0;
         let rotateOffset = 0;
+
+        let animationID : number | null;
         
         function handleScrolling (e : Event){
             currentScroll = (e as CustomEvent).detail;
@@ -45,15 +47,22 @@ function FloatingCharacter({character, translateEndX = 0, translateEndY = 0, rot
             // translateOffsetY = (clampedScroll/endOfScroll) * translateEndY + clampedScroll;
             rotateOffset = ((clampedScroll-scrollStart)/scrollLength) * rotateEnd;
             if (letterRef.current)  letterRef.current.style.transform = "translate("+ translateOffsetX+"px, " + (-translateOffsetY)+"px) rotate(" + rotateOffset +"deg)";
-            requestAnimationFrame(handleFloating);
+            animationID = requestAnimationFrame(handleFloating);
         }
         handleFloating();
+        return () => {
+            eventBus.removeEventListener('onScroll', handleScrolling);
+            if (animationID) {
+                cancelAnimationFrame(animationID);
+                animationID = null;
+            }
+        }
     }, []);
     if (character == " ") return (
-        <span className="flex h-full w-5 xl:w-15"></span>
+        <span className="flex h-full w-5 xl:w-15 will-change-transform"></span>
     )
     return(
-        <span ref={letterRef} className={`letter text-[60px] sm:text-[90px] md:text-[120px] lg:text-[150px] xl:text-[210px] font-semibold flex items-center justify-center`}>{character}</span>
+        <span ref={letterRef} className={`letter text-[60px] sm:text-[90px] md:text-[120px] lg:text-[150px] xl:text-[210px] font-semibold flex items-center justify-center will-change-transform`}>{character}</span>
     )
 }
 
