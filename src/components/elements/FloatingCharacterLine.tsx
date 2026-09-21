@@ -21,7 +21,7 @@ interface FloatingCharacterLineProps{
 /**
  * A container for a single line of floating text
  */
-const FloatingCharacterLine = ({ text, yMax = 3500, yMin = 3500, xMax = 10, xMin = 10, rot = 30, scrollStart = 0, scrollLength = 1000 } : FloatingCharacterLineProps) =>{
+const FloatingCharacterLine = ({ text, yMax = 2500, yMin = 2000, xMax = 10, xMin = 10, rot = 30, scrollStart = 0, scrollLength = 1000 } : FloatingCharacterLineProps) =>{
     const words : string[] = text.split(" ");
     return(
         <div className="flex flex-wrap relative">
