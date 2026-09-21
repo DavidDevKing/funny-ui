@@ -2,12 +2,13 @@
 import BouncyAttractor from './components/elements/BouncyAttractor';
 import FloatingCharacterContainer from './components/layout/FloatingCharacterContainer';
 import InkDropButton from './components/elements/InkDropButton';
-
+import SmoothScroll from './behaviors/SmoothScroll';
 
 
 
 
 function App() {
+    SmoothScroll();
 
     return (
         <div className="app w-full relative"  >

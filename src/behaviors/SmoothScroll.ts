@@ -6,25 +6,6 @@ let currentScroll: number = window.scrollY;
 let isScrolling: boolean = false;
     
 
-function UpdateScroll(){
-    window.scrollTo({top: currentScroll, behavior: 'auto'});
-}
-
-
-function SmoothScroll(){
-    if (isScrolling){
-        currentScroll = lerp(currentScroll, targetScroll, .04);
-        
-        if(Math.abs(currentScroll-targetScroll) <= 0.1){
-            currentScroll = targetScroll;
-            isScrolling = false;
-        }
-        UpdateScroll();
-    }
-    requestAnimationFrame(SmoothScroll);
-}
-
-SmoothScroll();
 
 const handleWheel = (e: WheelEvent) => {
     if (isScrolling != true){
@@ -41,5 +22,30 @@ const handleTouchStart = () => {
     isScrolling = false;
 }
 
-window.addEventListener('wheel', handleWheel, {passive: false});
-window.addEventListener('touchstart', handleTouchStart)
+
+
+function UpdateScroll(){
+    window.scrollTo({top: currentScroll, behavior: 'auto'});
+}
+
+function AnimateScroll(){
+    if (isScrolling){
+        currentScroll = lerp(currentScroll, targetScroll, .04);
+        
+        if(Math.abs(currentScroll-targetScroll) <= 0.1){
+            currentScroll = targetScroll;
+            isScrolling = false;
+        }
+        UpdateScroll();
+    }
+    requestAnimationFrame(AnimateScroll);
+
+}
+
+
+export default function SmoothScroll(){
+    window.addEventListener('wheel', handleWheel, {passive: false});
+    window.addEventListener('touchstart', handleTouchStart)
+
+    AnimateScroll();
+}
