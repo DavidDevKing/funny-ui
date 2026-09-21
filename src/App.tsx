@@ -4,11 +4,9 @@ import FloatingCharacterContainer from './components/layout/FloatingCharacterCon
 import InkDropButton from './components/elements/InkDropButton';
 import SmoothScroll from './behaviors/SmoothScroll';
 
-
-
+SmoothScroll();
 
 function App() {
-    SmoothScroll();
 
     return (
         <div className="app w-full relative"  >

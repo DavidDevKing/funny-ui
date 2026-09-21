@@ -46,6 +46,7 @@ function AnimateScroll(){
 export default function SmoothScroll(){
     window.addEventListener('wheel', handleWheel, {passive: false});
     window.addEventListener('touchstart', handleTouchStart)
+    console.log("something");
 
     AnimateScroll();
 }
