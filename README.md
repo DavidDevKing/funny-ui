@@ -11,7 +11,11 @@
 
 ## Getting Started
 
-Copy the contents of `src/behaviours`, `src/componets/elements` `src/fonts` to your project.
+1. Install the package via npm:
+
+``` bash
+npm install @david-king/funny-ui
+```
 
 ## Run the demo
 
