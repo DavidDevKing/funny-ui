@@ -1,6 +1,5 @@
 
 
-export const eventBus = new EventTarget();
 
 /** Returns the maximum scroll value for the entire document */
 export function maxScrollY() : number {
