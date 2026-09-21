@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { eventBus } from "../../behaviors/Utilities";
 import { lerp } from "../../behaviors/Utilities";
 
 
@@ -35,10 +34,10 @@ function FloatingCharacter({character, translateEndX = 0, translateEndY = 0, rot
 
         let animationID : number | null;
         
-        function handleScrolling (e : Event){
-            currentScroll = (e as CustomEvent).detail;
+        function handleScrolling (){
+            currentScroll = window.scrollY;
         }
-        eventBus.addEventListener('onScroll', handleScrolling);
+        document.addEventListener('scroll', handleScrolling);
 
         function handleFloating (){
             let clampedScroll = Math.min(Math.max(currentScroll, scrollStart), scrollLength);
@@ -51,7 +50,7 @@ function FloatingCharacter({character, translateEndX = 0, translateEndY = 0, rot
         }
         handleFloating();
         return () => {
-            eventBus.removeEventListener('onScroll', handleScrolling);
+            document.removeEventListener('scroll', handleScrolling);
             if (animationID) {
                 cancelAnimationFrame(animationID);
                 animationID = null;

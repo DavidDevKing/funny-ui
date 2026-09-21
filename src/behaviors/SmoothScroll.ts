@@ -1,4 +1,3 @@
-import { eventBus } from "../behaviors/Utilities";
 import { lerp, maxScrollY } from "./Utilities";
 
 
@@ -37,14 +36,10 @@ const handleWheel = (e: WheelEvent) => {
     targetScroll = Math.max(0, Math.min(targetScroll, maxScrollY()));
     e.preventDefault();
 }
-const handleScroll = () => {
-    eventBus.dispatchEvent(new CustomEvent('onScroll', {detail: window.scrollY}));
-}
 
 const handleTouchStart = () => {
     isScrolling = false;
 }
 
 window.addEventListener('wheel', handleWheel, {passive: false});
-window.addEventListener('scroll', handleScroll, {passive: false});
 window.addEventListener('touchstart', handleTouchStart)
