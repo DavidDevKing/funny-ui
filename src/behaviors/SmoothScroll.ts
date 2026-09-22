@@ -23,14 +23,18 @@ const handleTouchStart = () => {
 }
 
 
-
+/** Updates the window's y scroll value based on currentScroll */
 function UpdateScroll(){
     window.scrollTo({top: currentScroll, behavior: 'auto'});
 }
 
-function AnimateScroll(){
+/** 
+ * Function that handles the smooth scrolling animatmion logic through linear interpolation
+ * @param ease - Interpolation value for the lerp function
+ */
+function AnimateScroll(ease : number){
     if (isScrolling){
-        currentScroll = lerp(currentScroll, targetScroll, .04);
+        currentScroll = lerp(currentScroll, targetScroll, ease);
         
         if(Math.abs(currentScroll-targetScroll) <= 0.1){
             currentScroll = targetScroll;
@@ -38,15 +42,19 @@ function AnimateScroll(){
         }
         UpdateScroll();
     }
-    requestAnimationFrame(AnimateScroll);
+    requestAnimationFrame(() => {AnimateScroll(ease)});
 
 }
 
-
-export default function SmoothScroll(){
+/**
+ * Function that alters the default scrolling behaviour of a webpage
+ * @param damping - Value that controls the smoothing of the scroll
+ */
+export default function SmoothScroll(damping : number = .94){
     window.addEventListener('wheel', handleWheel, {passive: false});
     window.addEventListener('touchstart', handleTouchStart)
-    console.log("something");
 
-    AnimateScroll();
+    const ease : number = 1 - Math.min(0.999, Math.max(0.001, damping));
+
+    AnimateScroll(ease);
 }
