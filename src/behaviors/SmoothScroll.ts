@@ -5,6 +5,7 @@ let targetScroll: number = window.scrollY;
 let currentScroll: number = window.scrollY;
 let isScrolling: boolean = false;
     
+let requestID : number | null = null;
 
 
 const handleWheel = (e: WheelEvent) => {
@@ -25,7 +26,7 @@ const handleTouchStart = () => {
 
 /** Updates the window's y scroll value based on currentScroll */
 function UpdateScroll(){
-    window.scrollTo({top: currentScroll, behavior: 'auto'});
+    window.scrollTo({top: currentScroll, behavior: 'instant'});
 }
 
 /** 
@@ -42,7 +43,7 @@ function AnimateScroll(ease : number){
         }
         UpdateScroll();
     }
-    requestAnimationFrame(() => {AnimateScroll(ease)});
+    requestID = requestAnimationFrame(() => {AnimateScroll(ease)});
 
 }
 
@@ -50,11 +51,26 @@ function AnimateScroll(ease : number){
  * Function that alters the default scrolling behaviour of a webpage
  * @param damping - Value that controls the smoothing of the scroll
  */
-export default function SmoothScroll(damping : number = .94){
+export function SmoothScroll(damping : number = .94){
+    CancelSmoothScroll();
     window.addEventListener('wheel', handleWheel, {passive: false});
-    window.addEventListener('touchstart', handleTouchStart)
+    window.addEventListener('touchstart', handleTouchStart);
+
 
     const ease : number = 1 - Math.min(0.999, Math.max(0.001, damping));
 
     AnimateScroll(ease);
+}
+
+/**
+ * Stops the smooth scroll behaviour and restores windows scrolling to windows behaviour
+ */
+export function CancelSmoothScroll(){
+    if(requestID){
+        cancelAnimationFrame(requestID);
+        requestID = null;
+    }
+    isScrolling = false;
+    window.removeEventListener('wheel', handleWheel);
+    window.removeEventListener('touchstart', handleTouchStart);
 }
