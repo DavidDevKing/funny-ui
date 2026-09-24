@@ -33,16 +33,8 @@ import { SmoothScroll } from "@david-king/funny-ui";
 SmoothScroll();
 ```
 
-## Run the demo
+## Live Demo
 
-1. Install dependencies:
+Check out the live demo at [https://daviddevking.github.io/funny-ui](https://daviddevking.github.io/funny-ui)
 
-```bash
-npm install
-```
-
-2. Run development server:
-
-```bash
-npm run dev
-```
+> **Note:** setting the `rotateEnd` property on `FloatingCharacter` and the `rot` propety on  `FloatingCharacterLine` to anything other than 0 will cause lagging on gecko based browsers like firefox and zen browser and because of this, the demo will lag on gecko based browsers as well.
