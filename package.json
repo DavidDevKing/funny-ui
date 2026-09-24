@@ -3,21 +3,25 @@
   "private": false,
   "version": "1.0.4",
   "type": "module",
-  "main" : "./dist/index.cjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsup src/index.ts --format cjs,esm --external react --dts --clean",
     "prepublishOnly": "npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
     "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
@@ -29,6 +33,7 @@
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
+    "gh-pages": "^6.3.0",
     "globals": "^16.4.0",
     "tsup": "^8.5.1",
     "typescript": "~5.9.3",
@@ -36,8 +41,8 @@
     "vite": "^7.1.7"
   },
   "peerDependencies": {
-    "react" : ">=19.0.0",
-    "react-dom" : ">=19.0.0"
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
   },
   "allowScripts": {
     "esbuild@0.28.2": true
