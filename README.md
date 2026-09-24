@@ -14,7 +14,7 @@
 
 - `SmoothScroll` : Function that alters the default scrolling behavior of web pages to be smoother than usual.
 
-- `CancelSmoothScroll` : Function that stops the smooth scrolling behavior and restores windows scrolling to defualt behvior.
+- `CancelSmoothScroll` : Function that stops the smooth scrolling behavior and restores windows scrolling to defualt behavior.
 
 ## Getting Started
 
@@ -37,4 +37,4 @@ SmoothScroll();
 
 Check out the live demo at [https://daviddevking.github.io/funny-ui](https://daviddevking.github.io/funny-ui)
 
-> **Note:** setting the `rotateEnd` property on `FloatingCharacter` and the `rot` propety on  `FloatingCharacterLine` to anything other than 0 will cause lagging on gecko based browsers like firefox and zen browser and because of this, the demo will lag on gecko based browsers as well.
+> **Note:** setting the `rotateEnd` property on `FloatingCharacter` and the `rot` property on  `FloatingCharacterLine` to anything other than 0 will cause lagging on gecko based browsers like firefox and zen browser and because of this, the demo will lag on gecko based browsers as well.
