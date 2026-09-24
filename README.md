@@ -14,6 +14,8 @@
 
 - `SmoothScroll` : Function that alters the default scrolling behavior of web pages to be smoother than usual.
 
+- `CancelSmoothScroll` : Function that stops the smooth scrolling behavior and restores windows scrolling to defualt behvior.
+
 ## Getting Started
 
 1. Install the package via npm:
