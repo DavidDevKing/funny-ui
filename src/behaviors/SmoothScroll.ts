@@ -63,7 +63,7 @@ export function SmoothScroll(damping : number = .94){
 }
 
 /**
- * Stops the smooth scroll behaviour and restores windows scrolling to windows behaviour
+ * Stops the smooth scroll behaviour and restores windows scrolling to default behaviour
  */
 export function CancelSmoothScroll(){
     if(requestID){
