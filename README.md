@@ -8,9 +8,15 @@
 
 - `FloatingCharacterLine`: A line of floating characters.
 
+  ![Floating Characters](media/floating-characters.gif)
+
 - `BouncyAttractor`: A magnetic component that pulls towards the mouse cursor with springy physics.
+  
+  ![Bouncy Attractor](media/bouncy-attractor.gif)
 
 - `InkDropButton`: A button that mimics the effect of ink dropping on it on hover.
+
+  ![InkDrop Button](media/ink-drop.gif)
 
 - `SmoothScroll` : Function that alters the default scrolling behavior of web pages to be smoother than usual.
 
